@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=" {% static 'hrms/css/style.css'%} ">
+    <style>
+        
+        .body-bg{
+           background: rgb(155, 207, 92);  
+            background: -webkit-linear-gradient(to right, #6e7afa, #93c710);  
+            background: linear-gradient(to right, rgb(242, 178, 178), rgb(10, 215, 238)); 
+
+        }
+        .btn-orange{
+            background: #ead9a9;  
+            background: -webkit-linear-gradient(to right, #eef357, #007d51);  
+            background: linear-gradient(to right, rgb(229, 56, 117), rgb(116, 135, 231)); 
+        }
+        .btn-selenium{
+            background: #0f0c29;  
+            background: -webkit-linear-gradient(to right, #ca4bbf, #18e4aa, #e08b14);  
+            background: linear-gradient(to right, rgb(109, 109, 109), rgb(255, 136, 136)); 
+
+        }
+        
+    </style>
+    <title>Home</title>
+</head>
+<body class='body-bg'>
+    <section class="container">
+        <nav class="navbar navbar-light bg-light mt-3 mb-2 ">
+            <h1 class="display-4 mt-2 text-right text-warning">  <a href=" {% url 'hrms:recruitment' %} " class="btn  btn-selenium text-light"> We are Hiring !!! </a>  &emsp; &emsp; &emsp; &emsp;  &emsp;#ENA NOU LAMAIN LA-DANS </h1> 
+        </nav>
+        
+        <div class="row" style="margin: bottom 30px;">
+            <div class="col-lg-6">
+                <img src="{% static 'hrms/images/human.png' %}" class='img-fluid' alt="" width="450">
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-3 shadow">
+                    <div class="card-header btn-orange pt-4">
+                        <p class="lead">A Brief Intro</p>
+                    </div>
+
+                    <div class="card-body">
+                        <p class="lead text-justify">
+                            Mauritius-HRMS is all about offering services for Small and Medium Enterprise(SME), dealing in payroll and human resources management.
+                        </p><hr>
+                        <a href=" {% url 'hrms:login' %} " class="btn btn-block btn-selenium text-light"> Administrator &rarr; </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <nav class="navbar navbar-light bg-light">
+        <p class="display-4 mx-auto bg-light">Developed By L'équipe Sous-Marin</p>
+    </nav>
+</body>
+</html>
