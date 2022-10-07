@@ -40,7 +40,10 @@
                       </thead>
                       <tbody>
 
-                      {% for emp in emps %}
+                        
+                      
+                        {% for emp in emps %}
+                      
                         <tr>
                           <td class="font-weight-medium">
                             <img src="{{emp.thumb.url}}" class='img-fluid rounded-circle' alt="">
@@ -58,10 +61,62 @@
                             {{emp.salary}}
                           </td>
                            <td>
+                          
+                          </td>
+                           <td>
                             <button  type='button' onclick="payWithPaystack('{{emp.salary}}','{{emp.bank}}')"  class="btn btn-info">  Pay</button>
                           </td>
                         </tr>
                       {% endfor %}                   
+                      </tbody>
+                    </table>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+                          <th>
+                          </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        
+                      
+                        {% for pay in payslips %}
+                        {{pay.net_salary}}
+
+
+                      {% endfor %}
+                      
+                        <tr>
+                          <td class="font-weight-medium">
+                            <img src="{{emp.thumb.url}}" class='img-fluid rounded-circle' alt="">
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                          <td>
+                          </td>
+                           <td>
+                          </td>
+                           <td>
+                          
+                          </td>
+                           <td>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect, resolve_url,reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib.auth import get_user_model
-from .models  import Employee, Department,Kin, Attendance, Leave, Recruitment
+from .models  import Employee, Department, Attendance, Leave, Payslip, Recruitment
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView, CreateView,View,DetailView,TemplateView,ListView,UpdateView,DeleteView
-from .forms import RegistrationForm,LoginForm,EmployeeForm,KinForm,DepartmentForm,AttendanceForm, LeaveForm, RecruitmentForm
+from .forms import RegistrationForm,LoginForm,EmployeeForm,DepartmentForm,AttendanceForm, LeaveForm, RecruitmentForm
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.utils import timezone
@@ -79,8 +79,8 @@ class Employee_View(LoginRequiredMixin,DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         try:
-            query = Kin.objects.get(employee=self.object.pk)
-            context["kin"] = query
+            # query = Kin.objects.get(employee=self.object.pk)
+            # context["kin"] = query
             return context
         except ObjectDoesNotExist:
             return context
@@ -95,36 +95,36 @@ class Employee_Update(LoginRequiredMixin,UpdateView):
 class Employee_Delete(LoginRequiredMixin,DeleteView):
     pass
 
-class Employee_Kin_Add (LoginRequiredMixin,CreateView):
-    model = Kin
-    form_class = KinForm
-    template_name = 'hrms/employee/kin_add.html'
-    login_url = 'hrms:login'
+# class Employee_Kin_Add (LoginRequiredMixin,CreateView):
+#     model = Kin
+#     form_class = KinForm
+#     template_name = 'hrms/employee/kin_add.html'
+#     login_url = 'hrms:login'
    
 
-    def get_context_data(self):
-        context = super().get_context_data()
-        if 'id' in self.kwargs:
-            emp = Employee.objects.get(pk=self.kwargs['id'])
-            context['emp'] = emp
-            return context
-        else:
-            return context
+#     def get_context_data(self):
+#         context = super().get_context_data()
+#         if 'id' in self.kwargs:
+#             emp = Employee.objects.get(pk=self.kwargs['id'])
+#             context['emp'] = emp
+#             return context
+#         else:
+#             return context
 
-class Employee_Kin_Update(LoginRequiredMixin,UpdateView):
-    model = Kin
-    form_class = KinForm
-    template_name = 'hrms/employee/kin_update.html'
-    login_url = 'hrms:login'
+# class Employee_Kin_Update(LoginRequiredMixin,UpdateView):
+#     model = Kin
+#     form_class = KinForm
+#     template_name = 'hrms/employee/kin_update.html'
+#     login_url = 'hrms:login'
 
-    def get_initial(self):
-        initial = super(Employee_Kin_Update,self).get_initial()
+#     def get_initial(self):
+#         initial = super(Employee_Kin_Update,self).get_initial()
         
-        if 'id' in self.kwargs:
-            emp =  Employee.objects.get(pk=self.kwargs['id'])
-            initial['employee'] = emp.pk
+#         if 'id' in self.kwargs:
+#             emp =  Employee.objects.get(pk=self.kwargs['id'])
+#             initial['employee'] = emp.pk
             
-            return initial
+#             return initial
 
 #Department views
 
@@ -222,3 +222,11 @@ class Pay(LoginRequiredMixin,ListView):
     template_name = 'hrms/payroll/index.html'
     context_object_name = 'emps'
     login_url = 'hrms:login'
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        
+        context['payslips'] = Payslip.objects.all()
+        return context

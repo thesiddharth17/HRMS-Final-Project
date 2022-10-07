@@ -16,8 +16,8 @@ urlpatterns = [
     path('dashboard/employee/<int:pk>/view/', views.Employee_View.as_view(), name='employee_view'),
     path('dashboard/employee/<int:pk>/update/', views.Employee_Update.as_view(), name='employee_update'),
     path('dashboard/employee/<int:pk>/delete/', views.Employee_Delete.as_view(), name='employee_delete'),
-    path('dashboard/employee/<int:id>/kin/add/', views.Employee_Kin_Add.as_view(), name='kin_add'),
-    path('dashboard/employee/<int:id>/kin/<int:pk>/update/', views.Employee_Kin_Update.as_view(), name='kin_update'),
+    # path('dashboard/employee/<int:id>/kin/add/', views.Employee_Kin_Add.as_view(), name='kin_add'),
+    # path('dashboard/employee/<int:id>/kin/<int:pk>/update/', views.Employee_Kin_Update.as_view(), name='kin_update'),
 
 #Department Routes
     path('dashboard/department/<int:pk>/', views.Department_Detail.as_view(), name='dept_detail'),
@@ -40,5 +40,7 @@ urlpatterns = [
 
 #Payroll
     path("employee/pay/",views.Pay.as_view(), name="payroll")
+
+
 
 ]

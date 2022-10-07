@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from .models import Employee,Department,Kin,Attendance, Leave, Recruitment
+from .models import Employee,Department,Attendance, Leave, Recruitment
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django import forms
 from django.core import validators
@@ -40,18 +40,18 @@ class EmployeeForm (forms.ModelForm):
             'account':forms.TextInput(attrs={'class':'form-control'})
         }
 
-class KinForm(forms.ModelForm):
+# class KinForm(forms.ModelForm):
 
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    address = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control'}))
-    occupation = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    mobile = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    employee = forms.ModelChoiceField(Employee.objects.filter(kin__employee=None),required=False,widget=forms.Select(attrs={'class':'form-control'}))
+#     first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+#     last_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+#     address = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control'}))
+#     occupation = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+#     mobile = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+#     employee = forms.ModelChoiceField(Employee.objects.filter(kin__employee=None),required=False,widget=forms.Select(attrs={'class':'form-control'}))
 
-    class Meta:
-        model = Kin
-        fields = '__all__'
+#     class Meta:
+#         model = Kin
+#         fields = '__all__'
     
 
 
